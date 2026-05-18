@@ -1,58 +1,89 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Pet Spa - Sistema de Gestión Operativa Seguro
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Plataforma de gestión operativa para mascotas desarrollada bajo estándares de seguridad y trazabilidad forense orientada a mitigar vectores de ataque del OWASP Top 10.
 
-## About Laravel
+## Tecnologías Utilizadas
+* Backend: Laravel 13 / PHP 8.3+
+* Frontend: React + Inertia.js (Tailwind CSS)
+* Base de Datos: PostgreSQL
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Características de Seguridad Implementadas
+1. Arquitectura de Roles (RBAC): Control de acceso vertical y horizontal estricto para roles (SuperAdmin, Recepción, Groomer, Cliente).
+2. Trazabilidad Forense (Logs de Auditoría): Registro inalterable en la base de datos de cada acción crítica (Usuario, Fecha/Hora, Acción, IP y User-Agent), capturando intentos anónimos o fallidos de inicio de sesión.
+3. Mitigación de Fuerza Bruta: Políticas de bloqueo de cuenta persistente en PostgreSQL tras 5 intentos fallidos y Rate Limiting a nivel de ruta (throttle:login).
+4. Protección de Cuentas Críticas: Restricciones en controladores que impiden la auto-suspensión o auto-eliminación del Administrador raíz.
+5. Hardening de Entorno: Desactivación del modo de depuración (APP_DEBUG=false) y cifrado de cookies de sesión para prevenir fugas de información.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Instrucciones de Despliegue Local (Para Auditoría / Pentesting)
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+1. Clonar el repositorio:
+   ```bash
+   git clone [https://github.com/n4rkbig/pet-spa.git](https://github.com/n4rkbig/pet-spa.git)
+   cd pet-spa
+   # Pet Spa - Sistema de Gestión Operativa Seguro
 
-## Learning Laravel
+Plataforma de gestión operativa para mascotas desarrollada bajo estándares de seguridad y trazabilidad forense orientada a mitigar vectores de ataque del OWASP Top 10.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## Tecnologías Utilizadas
+* Backend: Laravel 13 / PHP 8.3+
+* Frontend: React + Inertia.js (Tailwind CSS)
+* Base de Datos: PostgreSQL
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## Características de Seguridad Implementadas
+1. Arquitectura de Roles (RBAC): Control de acceso vertical y horizontal estricto para roles (SuperAdmin, Recepción, Groomer, Cliente).
+2. Trazabilidad Forense (Logs de Auditoría): Registro inalterable en la base de datos de cada acción crítica (Usuario, Fecha/Hora, Acción, IP y User-Agent), capturando intentos anónimos o fallidos de inicio de sesión.
+3. Mitigación de Fuerza Bruta: Políticas de bloqueo de cuenta persistente en PostgreSQL tras 5 intentos fallidos y Rate Limiting a nivel de ruta (throttle:login).
+4. Protección de Cuentas Críticas: Restricciones en controladores que impiden la auto-suspensión o auto-eliminación del Administrador raíz.
+5. Hardening de Entorno: Desactivación del modo de depuración (APP_DEBUG=false) y cifrado de cookies de sesión para prevenir fugas de información.
 
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
+## Instrucciones de Despliegue Local (Para Auditoría / Pentesting)
 
-## Agentic Development
+1. Clonar el repositorio:
 
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
+   ```bash
+   git clone [https://github.com/n4rkbig/pet-spa.git](https://github.com/n4rkbig/pet-spa.git)
+   cd pet-spa
 
-```bash
-composer require laravel/boost --dev
+2. Instalar dependencias del Backend (PHP):
 
-php artisan boost:install
-```
+    ```Bash
+    composer install
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+3. Instalar dependencias del Frontend (JavaScript):
 
-## Contributing
+    ```Bash
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+    npm install
+    npm run dev
 
-## Code of Conduct
+4. Configurar el entorno:
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+    - Duplica el archivo de ejemplo: cp .env.example .env
 
-## Security Vulnerabilities
+    - Genera la llave de seguridad: php artisan key:generate
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+    - Abre el archivo .env y configura las credenciales de tu PostgreSQL local junto con el entorno seguro:
 
-## License
+    ```Ini, TOML
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+        APP_ENV=production
+        APP_DEBUG=false
+
+        DB_CONNECTION=pgsql
+        DB_HOST=127.0.0.1
+        DB_PORT=5432
+        DB_DATABASE=spa_mascotas_db
+        DB_USERNAME=tu_usuario_postgres
+        DB_PASSWORD=tu_contraseña_postgres
+
+5. Importar la Base de Datos:
+
+    - Crea una base de datos en pgAdmin llamada spa_mascotas_db.
+
+    - Ejecuta e importa el script estructurado que se encuentra en la carpeta bdd/database.sql.
+
+6. Iniciar el sistema:
+
+    ```Bash
+
+    php artisan serve
